@@ -1,0 +1,136 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:BankDeposits.ViewModels"
+             x:Class="BankDeposits.Views.AccountsPageView"
+             x:DataType="vm:AccountsPageViewModel">
+
+	<Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
+		<!-- Панель поиска -->
+		<StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+			<TextBox Text="{Binding SearchText}"
+					 Watermark="Поиск по клиенту..."
+					 Width="300" />
+			<Button Content="Поиск"
+					Command="{Binding SearchCommand}" />
+		</StackPanel>
+
+		<!-- Панель импорта/экспорта -->
+		<StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+			<TextBlock Text="Импорт:" VerticalAlignment="Center" FontWeight="Bold" />
+			<Button Content="CSV" Command="{Binding ImportCSVCommand}" />
+			<Button Content="Excel" Command="{Binding ImportExcelCommand}" />
+			<Button Content="JSON" Command="{Binding ImportJSONCommand}" />
+			<Button Content="XML" Command="{Binding ImportXMLCommand}" />
+			<TextBlock Text="Экспорт:" VerticalAlignment="Center" FontWeight="Bold" Margin="20,0,0,0" />
+			<Button Content="CSV" Command="{Binding ExportCSVCommand}" />
+			<Button Content="Excel" Command="{Binding ExportExcelCommand}" />
+			<Button Content="JSON" Command="{Binding ExportJSONCommand}" />
+			<Button Content="XML" Command="{Binding ExportXMLCommand}" />
+		</StackPanel>
+
+		<!-- Панель добавления/удаления -->
+		<StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+			<Button Content="Добавить"
+					Command="{Binding AddCommand}"
+					Background="#4CAF50"
+					Foreground="White"/>
+			<Button Content="Удалить"
+					Command="{Binding DeleteCommand}"
+					IsEnabled="{Binding SelectedAccount, Converter={x:Static ObjectConverters.IsNotNull}}"
+					Background="#F44336"
+					Foreground="White"/>
+		</StackPanel>
+
+		<!-- Шапка таблицы -->
+		<Border Grid.Row="3"
+				BorderThickness="1"
+				BorderBrush="#CCCCCC"
+				Background="#F5F5F5">
+			<Grid ColumnDefinitions="100,200,150,120,120,120,100,120,120"
+				  Height="30">
+				<TextBlock Grid.Column="0"
+						   Text="№ счета"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="1"
+						   Text="Клиент"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="2"
+						   Text="Вклад"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="3"
+						   Text="Дата откр."
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="4"
+						   Text="Дата закр."
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="5"
+						   Text="Сумма"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="6"
+						   Text="Статус"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="7"
+						   Text="К выплате"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+				<TextBlock Grid.Column="8"
+						   Text="Доход"
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"
+						   Margin="10,0"/>
+			</Grid>
+		</Border>
+
+		<!-- Список счетов -->
+		<ScrollViewer Grid.Row="4">
+			<ListBox ItemsSource="{Binding Accounts}"
+					 SelectedItem="{Binding SelectedAccount}"
+					 BorderThickness="0">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<Border BorderBrush="#EEEEEE"
+								BorderThickness="0,0,0,1"
+								Padding="10">
+							<Grid ColumnDefinitions="100,200,150,120,120,120,100,120,120">
+								<TextBlock Grid.Column="0"
+										   Text="{Binding Id}"
+										   FontWeight="Bold"/>
+								<TextBlock Grid.Column="1"
+										   Text="{Binding Client.FullName}"/>
+								<TextBlock Grid.Column="2"
+										   Text="{Binding Vklad.Name}"/>
+								<TextBlock Grid.Column="3"
+										   Text="{Binding OpenDate, StringFormat={}{0:dd.MM.yyyy}}"/>
+								<TextBlock Grid.Column="4"
+										   Text="{Binding CloseDate, StringFormat={}{0:dd.MM.yyyy}}"/>
+								<TextBlock Grid.Column="5"
+										   Text="{Binding Amount, StringFormat={}{0:N2}}"/>
+								<TextBlock Grid.Column="6"
+										   Text="{Binding Status}"/>
+								<TextBlock Grid.Column="7"
+										   Text="{Binding PayoutAmount, StringFormat={}{0:N2}}"/>
+								<TextBlock Grid.Column="8"
+										   Text="{Binding Income, StringFormat={}{0:N2}}"/>
+							</Grid>
+						</Border>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

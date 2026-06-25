@@ -1,0 +1,173 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BankDeposits.ViewModels"
+        xmlns:v="using:BankDeposits.Views"
+        x:Class="BankDeposits.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Банковские вклады"
+        Width="1200"
+        Height="800"
+        WindowStartupLocation="CenterScreen">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
+
+  <Grid ColumnDefinitions="250,*">
+    <!-- Боковая панель навигации -->
+    <Border Grid.Column="0"
+            Background="#2C3E50"
+            Padding="10">
+      <StackPanel Spacing="5">
+        <TextBlock Text="Банковские вклады"
+                   Foreground="White"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,10,0,20" />
+
+        <Button Content="Главная"
+                Command="{Binding NavigateHomeCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="15,10"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="14">
+          <Button.Styles>
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="#34495E" />
+            </Style>
+          </Button.Styles>
+        </Button>
+
+        <Button Content="Вклады"
+                Command="{Binding NavigateVkladsCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="15,10"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="14">
+          <Button.Styles>
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="#34495E" />
+            </Style>
+          </Button.Styles>
+        </Button>
+
+        <Button Content="Клиенты"
+                Command="{Binding NavigateClientsCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="15,10"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="14">
+          <Button.Styles>
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="#34495E" />
+            </Style>
+          </Button.Styles>
+        </Button>
+
+        <Button Content="Счета"
+                Command="{Binding NavigateAccountsCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="15,10"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="14">
+          <Button.Styles>
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="#34495E" />
+            </Style>
+          </Button.Styles>
+        </Button>
+
+        <Button Content="Графики"
+                Command="{Binding NavigateGraphsCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="15,10"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="14">
+          <Button.Styles>
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="#34495E" />
+            </Style>
+          </Button.Styles>
+        </Button>
+
+        <Button Content="Отчеты"
+                Command="{Binding NavigateReportsCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="15,10"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="14">
+          <Button.Styles>
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="#34495E" />
+            </Style>
+          </Button.Styles>
+        </Button>
+
+      </StackPanel>
+    </Border>
+
+    <!-- Основная область контента -->
+    <Grid Grid.Column="1" RowDefinitions="Auto,*">
+      <Border Grid.Row="0"
+              Background="#ECF0F1"
+              Padding="15,10">
+        <TextBlock Text="{Binding CurrentPageTitle}"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="#2C3E50" />
+      </Border>
+
+      <ContentControl Grid.Row="1"
+                      Content="{Binding CurrentPage}"
+                      Padding="15">
+        <ContentControl.DataTemplates>
+          <DataTemplate DataType="vm:HomePageViewModel">
+            <Grid>
+              <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+                <TextBlock Text="{Binding Title}"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Foreground="#2C3E50"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding Description}"
+                           FontSize="16"
+                           Foreground="#7F8C8D"
+                           TextWrapping="Wrap"
+                           MaxWidth="600"
+                           HorizontalAlignment="Center" />
+              </StackPanel>
+            </Grid>
+          </DataTemplate>
+          <DataTemplate DataType="vm:VkladsPageViewModel">
+            <v:VkladsPageView />
+          </DataTemplate>
+          <DataTemplate DataType="vm:ClientsPageViewModel">
+            <v:ClientsPageView />
+          </DataTemplate>
+          <DataTemplate DataType="vm:AccountsPageViewModel">
+            <v:AccountsPageView />
+          </DataTemplate>
+          <DataTemplate DataType="vm:GraphPageViewModel">
+            <v:GraphPageView />
+          </DataTemplate>
+          <DataTemplate DataType="vm:ReportPageViewModel">
+            <v:ReportPageView />
+          </DataTemplate>
+        </ContentControl.DataTemplates>
+      </ContentControl>
+    </Grid>
+  </Grid>
+</Window>

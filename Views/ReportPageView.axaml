@@ -1,0 +1,131 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:BankDeposits.ViewModels"
+             x:Class="BankDeposits.Views.ReportPageView"
+             x:DataType="vm:ReportPageViewModel">
+
+  <Grid RowDefinitions="Auto,*">
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+      <ComboBox SelectedIndex="{Binding SelectedReportIndex}" Width="400">
+        <ComboBoxItem>1. Сводка по клиентам</ComboBoxItem>
+        <ComboBoxItem>2. Сводка по вкладам</ComboBoxItem>
+        <ComboBoxItem>3. Активные и закрытые счета</ComboBoxItem>
+        <ComboBoxItem>4. Счета с истекающим сроком (30 дней)</ComboBoxItem>
+        <ComboBoxItem>5. Рейтинг клиентов по доходности</ComboBoxItem>
+      </ComboBox>
+      <Button Content="Экспорт в PDF"
+              Command="{Binding ExportPDFCommand}" />
+    </StackPanel>
+
+    <!-- Отчет 1 -->
+    <Border Grid.Row="1"
+            IsVisible="{Binding IsReport0Visible}"
+            BorderThickness="1"
+            BorderBrush="#CCCCCC">
+      <ListBox ItemsSource="{Binding ClientReport}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border BorderBrush="#EEEEEE" BorderThickness="0,0,0,1" Padding="10">
+              <Grid ColumnDefinitions="200,120,150,100,120,120,120">
+                <TextBlock Grid.Column="0" Text="{Binding FullName}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Passport}"/>
+                <TextBlock Grid.Column="2" Text="{Binding Phone}"/>
+                <TextBlock Grid.Column="3" Text="{Binding AccountCount}"/>
+                <TextBlock Grid.Column="4" Text="{Binding TotalAmount, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="5" Text="{Binding TotalIncome, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="6" Text="{Binding AvgRate, StringFormat={}{0:F2}%}"/>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+
+    <!-- Отчет 2 -->
+    <Border Grid.Row="1"
+            IsVisible="{Binding IsReport1Visible}"
+            BorderThickness="1"
+            BorderBrush="#CCCCCC">
+      <ListBox ItemsSource="{Binding VkladReport}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border BorderBrush="#EEEEEE" BorderThickness="0,0,0,1" Padding="10">
+              <Grid ColumnDefinitions="150,100,100,100,120,120">
+                <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding TermMonths}"/>
+                <TextBlock Grid.Column="2" Text="{Binding Rate, StringFormat={}{0:F2}}"/>
+                <TextBlock Grid.Column="3" Text="{Binding ClientCount}"/>
+                <TextBlock Grid.Column="4" Text="{Binding TotalAmount, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="5" Text="{Binding AvgIncome, StringFormat={}{0:N2}}"/>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+
+    <!-- Отчет 3 -->
+    <Border Grid.Row="1"
+            IsVisible="{Binding IsReport2Visible}"
+            BorderThickness="1"
+            BorderBrush="#CCCCCC">
+      <ListBox ItemsSource="{Binding StatusReport}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border BorderBrush="#EEEEEE" BorderThickness="0,0,0,1" Padding="10">
+              <Grid ColumnDefinitions="150,100,150,150">
+                <TextBlock Grid.Column="0" Text="{Binding Status}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Count}"/>
+                <TextBlock Grid.Column="2" Text="{Binding TotalAmount, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="3" Text="{Binding TotalIncome, StringFormat={}{0:N2}}"/>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+
+    <!-- Отчет 4 -->
+    <Border Grid.Row="1"
+            IsVisible="{Binding IsReport3Visible}"
+            BorderThickness="1"
+            BorderBrush="#CCCCCC">
+      <ListBox ItemsSource="{Binding ExpiringReport}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border BorderBrush="#EEEEEE" BorderThickness="0,0,0,1" Padding="10">
+              <Grid ColumnDefinitions="200,150,120,150,120">
+                <TextBlock Grid.Column="0" Text="{Binding ClientName}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Phone}"/>
+                <TextBlock Grid.Column="2" Text="{Binding Amount, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="3" Text="{Binding EndDate, StringFormat={}{0:dd.MM.yyyy}}"/>
+                <TextBlock Grid.Column="4" Text="{Binding PayoutAmount, StringFormat={}{0:N2}}"/>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+
+    <!-- Отчет 5 -->
+    <Border Grid.Row="1"
+            IsVisible="{Binding IsReport4Visible}"
+            BorderThickness="1"
+            BorderBrush="#CCCCCC">
+      <ListBox ItemsSource="{Binding TopClientsReport}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border BorderBrush="#EEEEEE" BorderThickness="0,0,0,1" Padding="10">
+              <Grid ColumnDefinitions="250,150,150,120">
+                <TextBlock Grid.Column="0" Text="{Binding FullName}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding TotalAmount, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="2" Text="{Binding TotalIncome, StringFormat={}{0:N2}}"/>
+                <TextBlock Grid.Column="3" Text="{Binding EffectiveRate, StringFormat={}{0:F2}%}"/>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+  </Grid>
+</UserControl>

@@ -1,0 +1,8 @@
+[
+  {"Id": 1, "Name": "Доходный", "TermMonths": 12, "InterestRate": 8.5},
+  {"Id": 2, "Name": "Надёжный", "TermMonths": 6, "InterestRate": 7.0},
+  {"Id": 3, "Name": "Пенсионный", "TermMonths": 18, "InterestRate": 9.0},
+  {"Id": 4, "Name": "Максимальный", "TermMonths": 24, "InterestRate": 10.5},
+  {"Id": 5, "Name": "Краткосрочный", "TermMonths": 3, "InterestRate": 5.5},
+  {"Id": 6, "Name": "Накопительный", "TermMonths": 12, "InterestRate": 8.0}
+]

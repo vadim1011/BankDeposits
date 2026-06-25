@@ -1,0 +1,47 @@
+{
+  "Vklads": [
+    {"id_vklad": 1, "namevklad": "Dohodny", "srok": 12, "stavka_procent": 8.5},
+    {"id_vklad": 2, "namevklad": "Nadezhny", "srok": 6, "stavka_procent": 7.0},
+    {"id_vklad": 3, "namevklad": "Pensionny", "srok": 18, "stavka_procent": 9.0},
+    {"id_vklad": 4, "namevklad": "Maksimalny", "srok": 24, "stavka_procent": 10.5},
+    {"id_vklad": 5, "namevklad": "Kratkosrochny", "srok": 3, "stavka_procent": 5.5},
+    {"id_vklad": 6, "namevklad": "Nakopitelny", "srok": 12, "stavka_procent": 8.0}
+  ],
+  "Clients": [
+    {"id_client": 1, "FIO": "Ivanov Ivan Ivanovich", "numberpassport": "4501123456", "Address": "g. Moskva, ul. Lenina 10", "phone": "8-495-123-45-67"},
+    {"id_client": 2, "FIO": "Petrova Anna Sergeevna", "numberpassport": "4502234567", "Address": "g. Sankt-Peterburg, Nevsky pr. 25", "phone": "8-812-456-78-90"},
+    {"id_client": 3, "FIO": "Sidorov Viktor Petrovich", "numberpassport": "4503345678", "Address": "g. Novosibirsk, ul. Promyshlennaya 3", "phone": "8-383-222-33-44"},
+    {"id_client": 4, "FIO": "Kozlova Elena Nikolaevna", "numberpassport": "4504456789", "Address": "g. Ekaterinburg, ul. Torgovaya 8", "phone": "8-343-555-66-77"},
+    {"id_client": 5, "FIO": "Mikhailov Dmitry Alekseevich", "numberpassport": "4505567890", "Address": "g. Kazan, ul. Technicheskaya 3", "phone": "8-843-111-22-33"},
+    {"id_client": 6, "FIO": "Sokolova Maria Igorevna", "numberpassport": "4506678901", "Address": "g. Nizhny Novgorod, ul. Postavshchikov 12", "phone": "8-831-777-88-99"},
+    {"id_client": 7, "FIO": "Popov Alexey Vladimirovich", "numberpassport": "4507789012", "Address": "g. Chelyabinsk, ul. Yuzhnaya 7", "phone": "8-351-444-55-66"},
+    {"id_client": 8, "FIO": "Novikova Olga Alexandrovna", "numberpassport": "4508890123", "Address": "g. Samara, ul. Zavodskaya 15", "phone": "8-846-999-00-11"},
+    {"id_client": 9, "FIO": "Morozov Sergey Ivanovich", "numberpassport": "4509901234", "Address": "g. Arkhangelsk, ul. Portovaya 3", "phone": "8-818-333-44-55"},
+    {"id_client": 10, "FIO": "Vasilyeva Tatyana Petrovna", "numberpassport": "4510012345", "Address": "g. Rostov-na-Donu, ul. Donskaya 9", "phone": "8-863-222-33-44"}
+  ],
+  "Accounts": [
+    {"id_account": 1001, "id_client": 1, "id_vklad": 1, "DataOpen": "2024-01-15", "DataClose": null, "sum": 500000},
+    {"id_account": 1002, "id_client": 1, "id_vklad": 4, "DataOpen": "2024-03-10", "DataClose": null, "sum": 300000},
+    {"id_account": 1003, "id_client": 2, "id_vklad": 2, "DataOpen": "2024-02-20", "DataClose": "2024-08-20", "sum": 150000},
+    {"id_account": 1004, "id_client": 2, "id_vklad": 1, "DataOpen": "2024-05-05", "DataClose": null, "sum": 200000},
+    {"id_account": 1005, "id_client": 3, "id_vklad": 3, "DataOpen": "2024-01-01", "DataClose": null, "sum": 1000000},
+    {"id_account": 1006, "id_client": 3, "id_vklad": 5, "DataOpen": "2024-04-15", "DataClose": "2024-07-15", "sum": 50000},
+    {"id_account": 1007, "id_client": 4, "id_vklad": 1, "DataOpen": "2024-02-10", "DataClose": null, "sum": 750000},
+    {"id_account": 1008, "id_client": 4, "id_vklad": 6, "DataOpen": "2024-06-01", "DataClose": null, "sum": 250000},
+    {"id_account": 1009, "id_client": 5, "id_vklad": 4, "DataOpen": "2024-01-20", "DataClose": null, "sum": 2000000},
+    {"id_account": 1010, "id_client": 5, "id_vklad": 2, "DataOpen": "2024-03-15", "DataClose": "2024-09-15", "sum": 100000},
+    {"id_account": 1011, "id_client": 6, "id_vklad": 3, "DataOpen": "2024-05-10", "DataClose": null, "sum": 800000},
+    {"id_account": 1012, "id_client": 6, "id_vklad": 1, "DataOpen": "2024-07-01", "DataClose": null, "sum": 150000},
+    {"id_account": 1013, "id_client": 7, "id_vklad": 6, "DataOpen": "2024-02-25", "DataClose": null, "sum": 120000},
+    {"id_account": 1014, "id_client": 7, "id_vklad": 5, "DataOpen": "2024-08-01", "DataClose": "2024-11-01", "sum": 30000},
+    {"id_account": 1015, "id_client": 8, "id_vklad": 2, "DataOpen": "2024-04-10", "DataClose": null, "sum": 450000},
+    {"id_account": 1016, "id_client": 8, "id_vklad": 4, "DataOpen": "2024-09-01", "DataClose": null, "sum": 600000},
+    {"id_account": 1017, "id_client": 9, "id_vklad": 1, "DataOpen": "2024-06-15", "DataClose": null, "sum": 350000},
+    {"id_account": 1018, "id_client": 9, "id_vklad": 3, "DataOpen": "2024-10-01", "DataClose": null, "sum": 900000},
+    {"id_account": 1019, "id_client": 10, "id_vklad": 2, "DataOpen": "2024-07-20", "DataClose": null, "sum": 280000},
+    {"id_account": 1020, "id_client": 10, "id_vklad": 6, "DataOpen": "2024-11-01", "DataClose": null, "sum": 180000},
+    {"id_account": 1021, "id_client": 3, "id_vklad": 4, "DataOpen": "2024-08-15", "DataClose": null, "sum": 750000},
+    {"id_account": 1022, "id_client": 5, "id_vklad": 6, "DataOpen": "2024-09-10", "DataClose": null, "sum": 400000},
+    {"id_account": 1023, "id_client": 8, "id_vklad": 1, "DataOpen": "2024-11-20", "DataClose": null, "sum": 500000}
+  ]
+}

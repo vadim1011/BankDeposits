@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:BankDeposits.ViewModels"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+             x:Class="BankDeposits.Views.GraphPageView"
+             x:DataType="vm:GraphPageViewModel">
+
+  <ScrollViewer>
+    <Grid RowDefinitions="Auto,*,Auto,*" ColumnDefinitions="*,*">
+      <!-- Столбчатая диаграмма -->
+      <TextBlock Grid.Row="0" Grid.Column="0"
+                 Text="Сумма вложений по видам вкладов"
+                 FontSize="16" FontWeight="Bold"
+                 Margin="10,10,10,0" />
+      <lvc:CartesianChart Grid.Row="1" Grid.Column="0"
+                          Series="{Binding BarSeries}"
+                          XAxes="{Binding BarXAxes}"
+                          Height="350"
+                          Margin="10" />
+
+      <!-- Круговая диаграмма -->
+      <TextBlock Grid.Row="0" Grid.Column="1"
+                 Text="Распределение клиентов по суммам"
+                 FontSize="16" FontWeight="Bold"
+                 Margin="10,10,10,0" />
+      <lvc:PieChart Grid.Row="1" Grid.Column="1"
+                    Series="{Binding PieSeries}"
+                    Height="350"
+                    Margin="10" />
+
+      <!-- Линейный график -->
+      <TextBlock Grid.Row="2" Grid.Column="0"
+                 Text="Динамика открытия счетов по месяцам"
+                 FontSize="16" FontWeight="Bold"
+                 Margin="10,10,10,0" />
+      <lvc:CartesianChart Grid.Row="3" Grid.Column="0"
+                          Series="{Binding LineSeries}"
+                          XAxes="{Binding LineXAxes}"
+                          Height="350"
+                          Margin="10" />
+
+      <!-- Гистограмма -->
+      <TextBlock Grid.Row="2" Grid.Column="1"
+                 Text="Распределение сроков вкладов"
+                 FontSize="16" FontWeight="Bold"
+                 Margin="10,10,10,0" />
+      <lvc:CartesianChart Grid.Row="3" Grid.Column="1"
+                          Series="{Binding HistogramSeries}"
+                          XAxes="{Binding HistogramXAxes}"
+                          Height="350"
+                          Margin="10" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>
